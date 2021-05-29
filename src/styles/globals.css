@@ -1,5 +1,48 @@
-/* Global Styling here */
+/* Global Styling and resets */
 html,
 body {
   font-family: 'Roboto', sans-serif, 'Courier New', Courier, monospace;
+}
+
+input:focus-within,
+button:focus-within,
+textarea:focus-within,
+i:focus-within,
+a:focus-within {
+  box-shadow: none !important;
+}
+
+/* Shadows */
+.shadow-1 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.shadow-2 {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Paddings */
+.pa-md {
+  padding: 16px;
+}
+
+.pa-sm {
+  padding: 12px;
+}
+
+.pa-xs {
+  padding: 8px;
+}
+
+/* Margins */
+.ma-md {
+  margin: 16px;
+}
+
+.ma-sm {
+  margin: 12px;
+}
+
+.ma-xs {
+  margin: 8px;
 }
