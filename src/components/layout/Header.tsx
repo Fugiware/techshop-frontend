@@ -19,6 +19,7 @@ import {
   MdClose,
   MdChevronLeft,
   MdChevronRight,
+  MdExpandMore,
   MdDevices,
 } from 'react-icons/md'
 
@@ -26,7 +27,7 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box margin="0 auto">
+    <Box margin="0 auto" boxShadow={{ base: 'none', md: 'md' }}>
       <Flex
         bg="#F6F6F6"
         color={useColorModeValue('gray.600', 'white')}
@@ -122,7 +123,12 @@ export default function WithSubnavigation() {
 
 const DesktopNav = () => {
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack
+      direction={'row'}
+      alignItems="center"
+      wrap="nowrap"
+      spacing={2}
+    >
       {NAV_ITEMS.map((navItem, index) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -136,18 +142,26 @@ const DesktopNav = () => {
                 _hover={{
                   textDecoration: 'none',
                   color: '#38B2AC',
-                  background: 'white',
+                  background: '#f6f6f6',
                 }}
               >
                 {navItem.label}
+                {index === 0 &&
+                  <Icon
+                    marginLeft={1}
+                    w={5}
+                    h={5}
+                    as={MdExpandMore}
+                  />
+                }
               </Link>
             </PopoverTrigger>
 
             {navItem.children && (
               <PopoverContent
                 border={0}
-                boxShadow={'xl'}
-                bg={useColorModeValue('white', 'gray.800')}
+                boxShadow={'md'}
+                bg="#f6f6f6"
                 p={2}
                 rounded={'xl'}
                 minW={'sm'}
