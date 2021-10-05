@@ -17,15 +17,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "include": [
     "next-env.d.ts",
+    "src",
     "**/*.ts",
-    "**/*.tsx",
-    "src"
+    "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "tsconfig.json"
   ]
 }
