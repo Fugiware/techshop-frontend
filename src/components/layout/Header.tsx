@@ -20,8 +20,8 @@ import {
   MdChevronLeft,
   MdChevronRight,
   MdExpandMore,
-  MdDevices,
 } from 'react-icons/md'
+import Logo from './Logo'
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -53,28 +53,7 @@ export default function WithSubnavigation() {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex
-          flex={{ base: 1 }}
-          justify={{ base: 'center', md: 'start' }}
-          alignItems="center"
-        >
-          <Text
-            bgGradient="linear(to-l, #38B2AC,#3182CE)"
-            bgClip="text"
-            fontSize="29px"
-            fontWeight="medium"
-          >
-            TECHSHOP
-          </Text>
-          <MdDevices
-            style={{
-              width: '30px',
-              height: '30px',
-              marginLeft: '4px',
-            }}
-            color="#38B2AC"
-          />
-        </Flex>
+        <Logo isFlex />
 
         <Stack
           flex={{ base: 1, md: 0 }}

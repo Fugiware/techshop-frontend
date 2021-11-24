@@ -8,6 +8,8 @@ import customTheme from 'styles/customTheme'
 import 'styles/globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const canUseLayout = !['Login', 'Signin'].includes(Component.displayName || '')
+
   return (
     <ChakraProvider theme={customTheme}>
       <Head>
@@ -16,9 +18,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {canUseLayout ? (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      ) : <Component {...pageProps} />}
     </ChakraProvider>
   )
 }
