@@ -8,7 +8,7 @@ import customTheme from 'styles/customTheme'
 import 'styles/globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const canUseLayout = !['Login', 'Signin'].includes(Component.displayName || '')
+  const canUseLayout = !['Login', 'Signup'].includes(Component.displayName || '')
 
   return (
     <ChakraProvider theme={customTheme}>

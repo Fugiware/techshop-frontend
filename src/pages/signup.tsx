@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Text, Input, Button, InputGroup, InputRightElement, Link } from '@chakra-ui/react'
+import { Text, Input, Button, InputGroup, InputRightElement, Link, Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import { Box, Center, Flex } from '@chakra-ui/layout'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import Logo from '../components/layout/Logo'
 
-const Login = () => {
+const SignUp = () => {
   const router = useRouter();
 
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [nome, setNome] = useState('');
+  const [cpf, setCPF] = useState('');
+  const [rg, setRG] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [tipo, setTipo] = useState('CLIENTE');
   const [showPassword, setShowPassword] = useState(false);
 
   const VisibilityIcon = showPassword ? MdVisibilityOff : MdVisibility;
@@ -23,7 +27,6 @@ const Login = () => {
     >
       <Box
         backgroundColor="white"
-        height="540px"
         width="500px"
         margin="12px"
         shadow="sm"
@@ -43,10 +46,10 @@ const Login = () => {
               fontSize="22px"
               fontWeight="Bold"
             >
-              Login
+              Sign Up
             </Text>
             <Text
-              color="#3182CE"
+              color="#26A69A"
               fontSize="12px"
               fontWeight="medium"
             >
@@ -55,22 +58,66 @@ const Login = () => {
           </Flex>
         </Flex>
 
+        <Flex width="100%" paddingTop="24px" direction="column">
+          <Text
+            color="#3182CE"
+            fontWeight="medium"
+            marginBottom="8px"
+          >
+            O que deseja fazer na plataforma?
+          </Text>
+          <RadioGroup onChange={setTipo} value={tipo}>
+            <Stack direction='row'>
+              <Radio value='CLIENTE' paddingRight="20px">Quero comprar</Radio>
+              <Radio value='VENDEDOR' colorScheme="teal">Quero Vender</Radio>
+            </Stack>
+          </RadioGroup>
+        </Flex>
+
+        <Flex width="100%" paddingTop="24px" direction="column">
+          <Input
+            value={nome}
+            placeholder="Nome"
+            size="md"
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </Flex>
+
         <Flex width="100%" paddingTop="20px" direction="column">
           <Input
-            value={login}
-            placeholder="Login"
+            value={cpf}
+            placeholder="CPF"
             size="md"
-            onChange={(e) => setLogin(e.target.value)}
+            onChange={(e) => setCPF(e.target.value)}
           />
+        </Flex>
 
+        <Flex width="100%" paddingTop="20px" direction="column">
+          <Input
+            value={rg}
+            placeholder="RG"
+            size="md"
+            onChange={(e) => setRG(e.target.value)}
+          />
+        </Flex>
 
-          <InputGroup marginTop="20px">
+        <Flex width="100%" paddingTop="20px" direction="column">
+          <Input
+            value={email}
+            placeholder="E-mail"
+            size="md"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Flex>
+
+        <Flex width="100%" paddingTop="20px" direction="column">
+          <InputGroup>
             <Input
-              value={password}
+              value={senha}
               placeholder="Senha"
               size="md"
               type={showPassword ? 'text' : 'password'}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setSenha(e.target.value)}
             />
             <InputRightElement children={
               <VisibilityIcon
@@ -87,18 +134,7 @@ const Login = () => {
             />
           </InputGroup>
 
-          <Link color="#3182CE" marginTop="8px">
-            <Text
-              color="#3182CE"
-              fontSize="14px"
-              fontWeight="medium"
-              align="end"
-            >
-              Esqueceu a senha?
-            </Text>
-          </Link>
-
-          <Flex width="100%" marginTop="42px" justify="center">
+          <Flex width="100%" marginTop="52px" justify="center">
             <Button
               bgGradient="linear-gradient(90deg, #3182CE 0%, #26A69A 100%);"
               color="white"
@@ -108,17 +144,17 @@ const Login = () => {
               fontWeight="medium"
               onClick={() => router.push('/')}
             >
-              Entrar
+              Cadastrar
             </Button>
           </Flex>
 
-          <Flex width="100%" margin={{ base: '40px 0 0 0', sm: '80px 0 0 0' }}>
+          <Flex width="100%" margin="60px 0 0 0">
             <Text
               color="#ADADAD"
               fontSize="14px"
               fontWeight="medium"
             >
-              Não possui uma conta? <Link color="#26A69A" marginTop="8px" href="/signup">Sign in</Link>
+              Já possui uma conta? <Link color="#26A69A" marginTop="8px" href="/login">Login</Link>
             </Text>
           </Flex>
         </Flex>
@@ -127,6 +163,6 @@ const Login = () => {
   )
 }
 
-Login.displayName = 'Login'
+SignUp.displayName = 'Signup'
 
-export default Login
+export default SignUp
