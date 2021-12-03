@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { useRouter } from 'next/router'
 import {
   Text,
@@ -10,16 +10,23 @@ import {
 } from '@chakra-ui/react'
 import { Box, Center, Flex } from '@chakra-ui/layout'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
-import Logo from '../components/layout/Logo'
+import Logo from 'components/layout/Logo'
 
 const Login = () => {
   const router = useRouter()
+
+  const [loading, setLoading] = useState(false)
 
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
   const VisibilityIcon = showPassword ? MdVisibilityOff : MdVisibility
+
+  const handleLogin = async () => {
+    setLoading(true)
+    router.push('/')
+  }
 
   return (
     <Center margin="0 auto" backgroundColor="#EBEBEB" height="100vh" width="100vw">
@@ -93,7 +100,8 @@ const Login = () => {
               width="140px"
               fontSize="18px"
               fontWeight="medium"
-              onClick={() => router.push('/')}
+              isLoading={loading}
+              onClick={() => handleLogin()}
             >
               Entrar
             </Button>
@@ -115,4 +123,4 @@ const Login = () => {
 
 Login.displayName = 'Login'
 
-export default Login
+export default memo(Login)

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { api } from '../config/api'
+import { api } from 'config/api'
 
 export type StateType = {
   id: number

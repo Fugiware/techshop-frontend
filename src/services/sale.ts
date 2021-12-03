@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { api } from '../config/api'
+import { api } from 'config/api'
 
 export type SaleType = {
   id?: number
