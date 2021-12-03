@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Box margin="0 auto" transition="0.5s ease-out">
         <Meta />
         <Box margin={{ base: '0 12px', sm: '0 16px', md: '0 80px' }}>
-          <Box as="main" marginY={16} >
+          <Box as="main" marginY={16}>
             {children}
           </Box>
         </Box>

@@ -1,7 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react'
 import { MdDevices } from 'react-icons/md'
 
-export default function Logo({ isFlex = false } : { isFlex?: boolean }) {
+export default function Logo({ isFlex = false }: { isFlex?: boolean }) {
   return (
     <Flex
       flex={{ base: isFlex ? 1 : 0 }}

@@ -1,12 +1,5 @@
 import Link from 'next/link'
-import {
-  Image,
-  Button,
-  Box,
-  Heading,
-  Text,
-  Link as ChakraLink,
-} from '@chakra-ui/react'
+import { Image, Button, Box, Heading, Text, Link as ChakraLink } from '@chakra-ui/react'
 import MotionBox from 'components/motion/Box'
 
 import { useColorMode } from '@chakra-ui/color-mode'
@@ -22,10 +15,7 @@ const Page404 = () => {
         width={['100%', '70%', '60%', '60%']}
         margin="0 auto"
       >
-        <Image
-          src="/404 Error-pana.svg"
-          alt="Error 404 not found Illustration"
-        />
+        <Image src="/404 Error-pana.svg" alt="Error 404 not found Illustration" />
       </MotionBox>
       <Text textAlign="center" fontSize="xs">
         <ChakraLink href="https://stories.freepik.com/web" isExternal>
@@ -37,18 +27,16 @@ const Page404 = () => {
         <Heading textAlign="center">Page not Found.</Heading>
 
         <Box textAlign="center" marginTop={4}>
-          <Text>It's Okay!</Text>
+          <Text>{"It's Okay!"}</Text>
           <Link href="/" passHref>
-            <Button
-              backgroundColor={colorMode === 'light' ? 'gray.300' : 'teal.500'}
-            >
-              Let's Head Back
+            <Button backgroundColor={colorMode === 'light' ? 'gray.300' : 'teal.500'}>
+              {"Let's Head Back"}
             </Button>
           </Link>
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Page404;
+export default Page404

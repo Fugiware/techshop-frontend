@@ -11,8 +11,8 @@ const Footer = () => {
       <Text>
         <Link href="https://github.com/Fugiware" isExternal>
           &copy; Fujiware -
-        </Link>
-        {" "} {new Date().getFullYear()}
+        </Link>{' '}
+        {new Date().getFullYear()}
       </Text>
     </Flex>
   )

@@ -45,9 +45,11 @@ export default function WithSubnavigation() {
           <IconButton
             onClick={onToggle}
             icon={
-              isOpen
-                ? <MdClose width="24px" height="24px" />
-                : <MdMenu width="24px" height="24px" />
+              isOpen ? (
+                <MdClose width="24px" height="24px" />
+              ) : (
+                <MdMenu width="24px" height="24px" />
+              )
             }
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
@@ -66,7 +68,8 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href="/login">
+            href="/login"
+          >
             Login
           </Button>
           <Button
@@ -74,7 +77,8 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={600}
             variant={'link'}
-            href="/signup">
+            href="/signup"
+          >
             Sign Up
           </Button>
         </Stack>
@@ -97,12 +101,7 @@ export default function WithSubnavigation() {
 
 const DesktopNav = () => {
   return (
-    <Stack
-      direction={'row'}
-      alignItems="center"
-      wrap="nowrap"
-      spacing={2}
-    >
+    <Stack direction={'row'} alignItems="center" wrap="nowrap" spacing={2}>
       {NAV_ITEMS.map((navItem, index) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -120,14 +119,7 @@ const DesktopNav = () => {
                 }}
               >
                 {navItem.label}
-                {index === 0 &&
-                  <Icon
-                    marginLeft={1}
-                    w={5}
-                    h={5}
-                    as={MdExpandMore}
-                  />
-                }
+                {index === 0 && <Icon marginLeft={1} w={5} h={5} as={MdExpandMore} />}
               </Link>
             </PopoverTrigger>
 
@@ -193,11 +185,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      p={4}
-      display={{ md: 'none' }}
-    >
+    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -220,10 +208,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           textDecoration: 'none',
         }}
       >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
-        >
+        <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
           {label}
         </Text>
         {children && (
@@ -259,10 +244,10 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 }
 
 interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
+  label: string
+  subLabel?: string
+  children?: Array<NavItem>
+  href?: string
 }
 
 const NAV_ITEMS: Array<NavItem> = [
