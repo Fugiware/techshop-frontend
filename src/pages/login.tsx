@@ -11,9 +11,12 @@ import {
 import { Box, Center, Flex } from '@chakra-ui/layout'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import Logo from 'components/layout/Logo'
+import { useNotify } from 'hooks/useNotify'
+import { sendLogin } from 'services/auth'
 
 const Login = () => {
   const router = useRouter()
+  const notify = useNotify()
 
   const [loading, setLoading] = useState(false)
 
@@ -24,8 +27,16 @@ const Login = () => {
   const VisibilityIcon = showPassword ? MdVisibilityOff : MdVisibility
 
   const handleLogin = async () => {
-    setLoading(true)
-    router.push('/')
+    try {
+      setLoading(true)
+      const data = await sendLogin()
+      notify.showSuccess('Login efetuado com sucesso!')
+      router.push('/')
+    } catch (error) {
+      notify.showError('Ocorreu um erro ao tentar fazer login')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

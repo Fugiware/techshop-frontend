@@ -14,9 +14,12 @@ import {
 import { Box, Center, Flex } from '@chakra-ui/layout'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import Logo from 'components/layout/Logo'
+import { sendSignup } from 'services/auth'
+import { useNotify } from 'hooks/useNotify'
 
 const SignUp = () => {
   const router = useRouter()
+  const notify = useNotify()
 
   const [loading, setLoading] = useState(false)
 
@@ -31,8 +34,16 @@ const SignUp = () => {
   const VisibilityIcon = showPassword ? MdVisibilityOff : MdVisibility
 
   const handleSignUp = async () => {
-    setLoading(true)
-    router.push('/')
+    try {
+      setLoading(true)
+      const data = await sendSignup()
+      notify.showSuccess('Cadastro realizado com sucesso!')
+      router.push('/')
+    } catch (error) {
+      notify.showError('Ocorreu um erro ao tentar fazer o cadastro')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
